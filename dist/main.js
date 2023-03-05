@@ -18,7 +18,6 @@ class Department {
     }
     printEmployees() {
         console.log(this.employees.length);
-        console.log(this.employees);
     }
     describe() {
         console.log(`department is ${this.name} : ${this.id}`);
@@ -43,11 +42,25 @@ class Accounting extends Department {
         super(id, name);
         this.reports = reports;
     }
+    //*Getters and Setters
+    get Recentreports() {
+        if (!this.reports) {
+            throw new Error("No report Found");
+        }
+        return this.reports[this.reports.length - 1];
+    }
+    set Recentreports(v) {
+        if (!v) {
+            throw new Error("Can\n't insert new report");
+        }
+        this.addReports(v);
+    }
     addReports(reports) {
         this.reports.push(reports);
     }
     printReports() {
         console.log(this.reports);
+        console.log(this.reports.length);
     }
     //*Overriding through Private Property.
     addEmployees(employees) {
@@ -56,32 +69,32 @@ class Accounting extends Department {
         }
         super.addEmployees(employees);
     }
-    //*Getters and Setters
-    get Recentreports() {
-        if (condition) {
-        }
-    }
 }
 let department = new Department('accounting', 'd1');
-console.log(department);
-let It = new ITdepartment('', '');
+// console.log(department);
+let It = new ITdepartment('It', 'secondClass');
 // console.log(It);
-let accounting = new Accounting('', '');
-It.addIT('Loretta');
-It.addIT("Lovelyn");
-It.addIT("Lovette");
-// It.printIT()
-;
-department.addEmployees('leela');
+let accounting = new Accounting('a1', '', []);
+// console.log(accounting);
 department.addEmployees('leela');
 department.addEmployees('Jhon');
 department.addEmployees('Don');
 accounting.printEmployees();
+It.addIT('Loretta');
+It.addIT("Lovelyn");
+It.addIT("Lovette");
+It.printIT();
+accounting.addReports('Earlier received Report');
+accounting.addReports('Earliest received Report');
+accounting.addReports('LastestReort');
+accounting.Recentreports = 'assigned report';
+console.log(accounting.Recentreports);
+accounting.printReports();
 // department.employees [1] = 'Bruno';
 // //direct way to add
 let departmentCopy = {
     describe: department.describe
 };
-//! console.log(departmentCopy);
+// console.log(departmentCopy);
 departmentCopy.describe.bind(department)();
 //# sourceMappingURL=main.js.map
