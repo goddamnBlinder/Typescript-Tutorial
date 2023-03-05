@@ -24,6 +24,7 @@ class Department {
         console.log(this.employees);
     }
 }
+Department.financialyear = 2022;
 class ITdepartment extends Department {
     constructor(name, id, it = []) {
         super(name, id);
@@ -55,6 +56,13 @@ class Accounting extends Department {
         }
         this.addReports(v);
     }
+    //*----------------------------------------------------------//
+    //* Static Methods 
+    //this doesnt work here cuz this method is not an instance of the class and can be call anywhere.
+    static createEmployees(name) {
+        return { name: name };
+    }
+    //*-----------------------------------------------------------//
     addReports(reports) {
         this.reports.push(reports);
     }
@@ -69,12 +77,16 @@ class Accounting extends Department {
         }
         super.addEmployees(employees);
     }
+    //*--------------------------------------------------------//
+    describe() {
+        console.log('this accounting unit with Id: ' + this.id);
+    }
 }
 let department = new Department('accounting', 'd1');
 // console.log(department);
 let It = new ITdepartment('It', 'secondClass');
 // console.log(It);
-let accounting = new Accounting('a1', '', []);
+let accounting = new Accounting('Account', 'A1', []);
 // console.log(accounting);
 department.addEmployees('leela');
 department.addEmployees('Jhon');
@@ -84,6 +96,8 @@ It.addIT('Loretta');
 It.addIT("Lovelyn");
 It.addIT("Lovette");
 It.printIT();
+//---------------------------//
+accounting.describe();
 accounting.addReports('Earlier received Report');
 accounting.addReports('Earliest received Report');
 accounting.addReports('LastestReort');
@@ -92,9 +106,24 @@ console.log(accounting.Recentreports);
 accounting.printReports();
 // department.employees [1] = 'Bruno';
 // //direct way to add
+Department.financialyear = 2023; //staic property
+console.log(Accounting.createEmployees('Leela'), Department.financialyear.toString());
 let departmentCopy = {
     describe: department.describe
 };
 // console.log(departmentCopy);
 departmentCopy.describe.bind(department)();
+//?-----------------------------------------//
+class newDepartment {
+    constructor(name, input) {
+        this.name = name;
+        this.input = input;
+    }
+}
+class {
+}
+new ;
+newDepartment;
+{
+}
 //# sourceMappingURL=main.js.map

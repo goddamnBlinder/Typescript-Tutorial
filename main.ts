@@ -2,8 +2,9 @@ console.log("Login");
 //? Inheritance 
 class Department { 
 private employees: string[] = [];
+static financialyear = 2022;
     
-  constructor(private name:string, private readonly id: string, employees:string[] = [] ){
+  constructor(private name:string, protected readonly id: string, employees:string[] = [] ){
     this.name = name;
     this.employees = employees;
     this.id = id;
@@ -12,6 +13,7 @@ private employees: string[] = [];
 addEmployees(employees:string){
     //?Validations
     //* this.id = 'difficult'; wont be changed by other Users cause is an readonly.
+  
     this.employees.push(employees)
 }
 printEmployees(){
@@ -21,7 +23,7 @@ printEmployees(){
     
 }
 
-describe(this:Department){
+describe(this:Department):void{
     console.log(`department is ${this.name} : ${this.id}`);
     console.log(this.employees);   
     
@@ -62,9 +64,16 @@ class Accounting extends Department{
         throw new Error("Can\n't insert new report"); 
      }this.addReports(v)
       }
-      
+//*----------------------------------------------------------//
 
+//* Static Methods 
+//this doesnt work here cuz this method is not an instance of the class and can be call anywhere.
+    static createEmployees(name:string){
+      return  {name: name}
+     }
+    
 
+//*-----------------------------------------------------------//
     addReports(reports:string){
      this.reports.push(reports);
     }
@@ -79,6 +88,10 @@ class Accounting extends Department{
            return; 
         } super.addEmployees(employees);   
     }
+//*--------------------------------------------------------//
+    describe(){
+        console.log('this accounting unit with Id: '+ this.id)        
+    }    
 }
 
 let department = new Department('accounting', 'd1');
@@ -86,7 +99,7 @@ let department = new Department('accounting', 'd1');
 
 let It = new ITdepartment('It', 'secondClass');
 // console.log(It);
-let accounting = new Accounting('a1', '', [] );
+let accounting = new Accounting('Account', 'A1', [] );
 // console.log(accounting);
 
 
@@ -102,6 +115,8 @@ It.addIT("Lovelyn");
 It.addIT("Lovette");
 
 It.printIT()
+//---------------------------//
+accounting.describe()
 
 accounting.addReports('Earlier received Report')
 accounting.addReports('Earliest received Report')
@@ -113,9 +128,30 @@ accounting.printReports();
 // department.employees [1] = 'Bruno';
 // //direct way to add
 
+Department.financialyear = 2023 //staic property
+console.log(Accounting.createEmployees('Leela'), Department.financialyear.toString());
+
 
 let departmentCopy = {
     describe: department.describe
 };
 // console.log(departmentCopy);
 departmentCopy.describe.bind(department)();
+//?-----------------------------------------//
+
+abstract class newDepartment{
+    name
+    input
+    constructor(name:string, input:number){
+     this.name = name;
+     this.input = input;
+    }
+
+    abstract abstract() :{
+
+    }
+}
+
+class new extends newDepartment {
+
+}
