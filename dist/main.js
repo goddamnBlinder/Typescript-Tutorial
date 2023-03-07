@@ -114,16 +114,23 @@ let departmentCopy = {
 // console.log(departmentCopy);
 departmentCopy.describe.bind(department)();
 //?-----------------------------------------//
+/*Abstract classes in Typescript are classes that cannot be directly instantiated,
+but can be used as a base class for other classes
+They can contain abstract methods, which are methods that have no implementation in the abstract class
+ but must be implemented in any concrete class that extends the abstract class.*/
 class newDepartment {
     constructor(name, input) {
         this.name = name;
         this.input = input;
     }
 }
-class {
+class AbDepartment extends newDepartment {
+    constructor(name, input) {
+        super(name, input);
+    }
+    abstract() {
+        console.log("this is the new Department :" + this.name);
+    }
 }
-new ;
-newDepartment;
-{
-}
+console.log(newDepartment);
 //# sourceMappingURL=main.js.map

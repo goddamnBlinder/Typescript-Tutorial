@@ -68,8 +68,8 @@ class Accounting extends Department{
 
 //* Static Methods 
 //this doesnt work here cuz this method is not an instance of the class and can be call anywhere.
-    static createEmployees(name:string){
-      return  {name: name}
+    static createEmployees(name:string) {
+      return {name: name}
      }
     
 
@@ -137,7 +137,14 @@ let departmentCopy = {
 };
 // console.log(departmentCopy);
 departmentCopy.describe.bind(department)();
+
+
 //?-----------------------------------------//
+/*Abstract classes in Typescript are classes that cannot be directly instantiated, 
+but can be used as a base class for other classes
+They can contain abstract methods, which are methods that have no implementation in the abstract class
+ but must be implemented in any concrete class that extends the abstract class.*/
+
 
 abstract class newDepartment{
     name
@@ -147,11 +154,17 @@ abstract class newDepartment{
      this.input = input;
     }
 
-    abstract abstract() :{
+}
 
+class AbDepartment extends newDepartment {
+    constructor(name:string, input:number){
+        super(name, input)
     }
-}
+    abstract(){
+     console.log("this is the new Department :"+ this.name);
 
-class new extends newDepartment {
+    } 
+}  
+console.log(newDepartment);
 
-}
+
