@@ -124,7 +124,7 @@ class newDepartment {
         this.input = input;
     }
 }
-class AbDepartment extends newDepartment {
+class bigDepartment extends newDepartment {
     constructor(name, input) {
         super(name, input);
     }
@@ -132,5 +132,28 @@ class AbDepartment extends newDepartment {
         console.log("this is the new Department :" + this.name);
     }
 }
-console.log(newDepartment);
+class smallDepartment extends newDepartment {
+    constructor(name, input) {
+        super(name, input);
+    }
+    abstract() {
+        console.log("this is the new Department :" + this.name);
+    }
+}
+//? Singleton design pattern of a class and private constructor
+class Singleton extends Department {
+    constructor(age, name, id) {
+        super(name, id);
+        this.age = age;
+    }
+    static getInstance() {
+        if (this.instance) {
+            return this.instance;
+        }
+        this.instance = new Singleton(7, 'Singleton Design Pattern', "Joanie");
+        return this.instance;
+    }
+}
+let sinG = Singleton.getInstance();
+console.log(sinG);
 //# sourceMappingURL=main.js.map
