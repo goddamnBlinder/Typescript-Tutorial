@@ -67,7 +67,7 @@ class Accounting extends Department{
 //*----------------------------------------------------------//
 
 //* Static Methods 
-//this doesnt work here cuz this method is not an instance of the class and can be call anywhere.
+//this doesnt work here cuz this method is not an focus of the class and can be call anywhere.
     static createEmployees(name:string) {
       return {name: name}
      }
@@ -181,21 +181,87 @@ class smallDepartment extends newDepartment {
 //? Singleton design pattern of a class and private constructor
 
 class Singleton extends Department {
-    private static instance:Singleton;
-    private constructor(protected age:number, name:string, id:string){
-      super(name, id)
-      
+    private static focus: Singleton;
+    private constructor(name:string, id:string, protected num: number){
+        super(name, id);
+        this.num = num;
     }
     static getInstance(){
-        if(this.instance){
-      return this.instance
-        }this.instance = new Singleton( 7, 'Singleton Design Pattern', "Joanie") 
-        return this.instance;
+        if (Singleton.focus) {
+            return Singleton.focus
+        }Singleton.focus = new Singleton("Joan", "Leela" ,23);
+        return  Singleton.focus
+    }
+}   
+let Instance = Singleton.getInstance();
+console.log(Instance);
+//*Interface 
+//* helps to describe a block of code (objects, Class, Functions) Data Types
+
+interface Thereis {
+    name: string;
+    age:number;
+    occupation?: string;     //Optional parameters you may add or not.
+    meth(value:string):void
+}
+//?In Objects Literals
+let obj:Thereis = {
+   name: 'Bradly',
+   age: 23,
+   meth(value){
+    console.log(value +`this Obj is said to be: ${this.name}`.endsWith("Th"));
+   }
+
+}
+let adj:Thereis = {
+    name: 'Angel',
+    age:21,
+    meth(value){
+        console.log(value +`this adj aged :${this.age}`);
+        
     }
 }
-    
+type Thatis = {
+    readonly once: string;
+}
+//The  two ways of ways implementing the Interface, here, using function to prove a point.
+type Fun = (a: number , b: number) => number;
 
-let sinG = Singleton.getInstance();
-console.log(sinG);
+var run:Fun
+run = (a, b) =>{
+    return a + Math.floor(b);
+}
+console.log(run(12, 36));
 
 
+
+interface aunction {
+    (a: number , b:number):number 
+}
+var Aunc:aunction;
+Aunc = (x,y) => {
+    return x+ y;
+}
+console.log(Aunc(34,16));
+
+
+//?In class
+class Moveto implements Thereis{
+    constructor(public name:string, public age:number){
+      
+    }
+    meth(){ 
+        if(this.age){
+        console.log( this.name +" is "+this.age +" years old.")
+    }else{
+         console.log(`this is ${this.name}`);
+         
+    }
+  }
+}
+ 
+
+
+let move = new Moveto("Ye", 21);
+
+console.log(move.meth());

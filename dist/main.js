@@ -58,7 +58,7 @@ class Accounting extends Department {
     }
     //*----------------------------------------------------------//
     //* Static Methods 
-    //this doesnt work here cuz this method is not an instance of the class and can be call anywhere.
+    //this doesnt work here cuz this method is not an focus of the class and can be call anywhere.
     static createEmployees(name) {
         return { name: name };
     }
@@ -142,18 +142,61 @@ class smallDepartment extends newDepartment {
 }
 //? Singleton design pattern of a class and private constructor
 class Singleton extends Department {
-    constructor(age, name, id) {
+    constructor(name, id, num) {
         super(name, id);
-        this.age = age;
+        this.num = num;
+        this.num = num;
     }
     static getInstance() {
-        if (this.instance) {
-            return this.instance;
+        if (Singleton.focus) {
+            return Singleton.focus;
         }
-        this.instance = new Singleton(7, 'Singleton Design Pattern', "Joanie");
-        return this.instance;
+        Singleton.focus = new Singleton("Joan", "Leela", 23);
+        return Singleton.focus;
     }
 }
-let sinG = Singleton.getInstance();
-console.log(sinG);
+let Instance = Singleton.getInstance();
+console.log(Instance);
+//?In Objects Literals
+let obj = {
+    name: 'Bradly',
+    age: 23,
+    meth(value) {
+        console.log(value + `this Obj is said to be: ${this.name}`.endsWith("Th"));
+    }
+};
+let adj = {
+    name: 'Angel',
+    age: 21,
+    meth(value) {
+        console.log(value + `this adj aged :${this.age}`);
+    }
+};
+var run;
+run = (a, b) => {
+    return a + Math.floor(b);
+};
+console.log(run(12, 36));
+var Aunc;
+Aunc = (x, y) => {
+    return x + y;
+};
+console.log(Aunc(34, 16));
+//?In class
+class Moveto {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    meth() {
+        if (this.age) {
+            console.log(this.name + " is " + this.age + " years old.");
+        }
+        else {
+            console.log(`this is ${this.name}`);
+        }
+    }
+}
+let move = new Moveto("Ye", 21);
+console.log(move.meth());
 //# sourceMappingURL=main.js.map
