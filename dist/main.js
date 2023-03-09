@@ -172,12 +172,6 @@ let adj = {
         console.log(value + `this adj aged :${this.age}`);
     }
 };
-let test = {
-    once = "OHHH",
-    date = new Date(),
-    function: fun(a, number, b, number)
-}, { return: a };
-+b;
 var run;
 run = (a, b) => {
     return a + Math.floor(b);
@@ -205,4 +199,20 @@ class Moveto {
 }
 let move = new Moveto("Ye", 21);
 console.log(move.meth());
+let mask = {
+    position: 'CTO',
+    roles: ['array'],
+    name: 'James',
+    duties: 23,
+};
+console.log(mask);
+let faggots;
+faggots = 34;
+function Getter(a, b) {
+    if (a === "string" || b === "string") {
+        a.toLocaleString() + b.toLocaleString();
+    }
+    return;
+}
+console.log(Getter(3, 9));
 //# sourceMappingURL=main.js.map

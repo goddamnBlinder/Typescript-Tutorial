@@ -227,19 +227,13 @@ type Thatis = {
 
 }
 //The  two ways of ways implementing the Interface, here, using function to prove a point.
-type Fun = (a: number , b: number) => number;
+type Fun =  (a: number , b: number) => number;
 
 //Intersecting both Types of Interfsce
 
  type bothType = Thatis & Fun;
 
- let test:bothType = {
-    once = "OHHH"
-    date = new Date();
-    function fun(a:number, b:number) {
-        return a + b;
-    }
- }
+
 
 
 var run:Fun
@@ -274,9 +268,54 @@ class Moveto implements Thereis{
     }
   }
 }
- 
 
 
 let move = new Moveto("Ye", 21);
 
 console.log(move.meth());
+
+
+//*Intersecting multiple Types and Interfacce
+ type Admin = {
+    position: string;
+    roles: string[];
+ }
+
+ type Employ = {
+    name:string;
+    duties:number;
+
+ }
+
+ type Deploy = Admin & Employ;
+
+let mask:Deploy = {
+position: 'CTO',
+roles:['array'],
+name:'James',
+duties:23,
+
+ }
+
+ console.log(mask);
+
+ //it selects only the most frequent DT
+
+type combine = number | string;
+type numeric = boolean | number;
+
+type selects = combine & numeric;
+
+let faggots: selects;
+faggots = 34;
+
+function Getter(a:combine,b:combine){
+    if (a === "string" || b === "string") {
+        a.toLocaleString() + b.toLocaleString();
+    }return 
+}
+
+console.log(Getter(3,9));
+ 
+ 
+
