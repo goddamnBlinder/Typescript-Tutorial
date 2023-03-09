@@ -236,6 +236,14 @@ class Truck {
         console.log(`Luggages is about: ` + amount);
     }
 }
-function Ride(eng) {
+function Ride(engine) {
+    console.log(engine.drive());
+    if (engine instanceof Truck) {
+        engine.carryCargo(30);
+    }
 }
+const v1 = new Car();
+const v2 = new Truck();
+// console.log(v2.drive());
+Ride(v2);
 //# sourceMappingURL=main.js.map
