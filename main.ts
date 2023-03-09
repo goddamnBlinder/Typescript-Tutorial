@@ -223,9 +223,24 @@ let adj:Thereis = {
 }
 type Thatis = {
     readonly once: string;
+    date: Date;
+
 }
 //The  two ways of ways implementing the Interface, here, using function to prove a point.
 type Fun = (a: number , b: number) => number;
+
+//Intersecting both Types of Interfsce
+
+ type bothType = Thatis & Fun;
+
+ let test:bothType = {
+    once = "OHHH"
+    date = new Date();
+    function fun(a:number, b:number) {
+        return a + b;
+    }
+ }
+
 
 var run:Fun
 run = (a, b) =>{

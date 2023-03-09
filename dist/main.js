@@ -172,6 +172,12 @@ let adj = {
         console.log(value + `this adj aged :${this.age}`);
     }
 };
+let test = {
+    once = "OHHH",
+    date = new Date(),
+    function: fun(a, number, b, number)
+}, { return: a };
++b;
 var run;
 run = (a, b) => {
     return a + Math.floor(b);
