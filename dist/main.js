@@ -212,16 +212,30 @@ function Getter(a, b) {
     if (typeof a === 'string' || typeof b === 'string') {
         a.toLocaleString() + b.toLocaleString();
     }
-    return;
 }
-function check(ck) {
-    console.log('name: ' + ck.name);
-    if ('roles' in ck) {
-        console.log('roles: ' + ck.roles);
+function check(emp) {
+    console.log('name: ' + emp.name);
+    if ('roles' in emp) {
+        console.log('roles: ' + emp.roles);
     }
-    if ('duties' in ck) {
-        console.log('duties: ' + ck.duties);
+    if ('duties' in emp) {
+        console.log('duties: ' + emp.duties);
     }
 }
-console.log(check);
+//? In classes
+class Car {
+    drive() {
+        console.log(`A very smooth drive`);
+    }
+}
+class Truck {
+    drive() {
+        console.log(`Very smoother ride with truck`);
+    }
+    carryCargo(amount) {
+        console.log(`Luggages is about: ` + amount);
+    }
+}
+function Ride(eng) {
+}
 //# sourceMappingURL=main.js.map

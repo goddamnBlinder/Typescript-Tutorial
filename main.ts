@@ -310,24 +310,44 @@ type selects = combine & numeric;
 let faggots: selects;
 faggots = 34;
 
-function Getter(a:combine,b:combine){
+function Getter(a:combine, b:combine):void{
     if (typeof a === 'string' || typeof b === 'string') {
         a.toLocaleString() + b.toLocaleString();
-    }return
+    }
 }
 
 type selected = Admin | Employ;
 
-function check(ck:selected){
-    console.log('name: '+ck.name);
+function check(emp:selected){
+    console.log('name: '+emp.name);
 
-    if('roles' in ck){
-        console.log('roles: '+ ck.roles);   
-    }if('duties' in ck){
-        console.log('duties: '+ ck.duties);
+    if('roles' in emp){
+        console.log('roles: '+ emp.roles);   
+    }if('duties' in emp){
+        console.log('duties: '+ emp.duties);
         
     }
+}
+//? In classes
+class Car {
+    drive(){
+        console.log(`A very smooth drive`);
+        
+    }
+}
+class Truck {
+    drive(){
+        console.log(`Very smoother ride with truck`);
+        
+    }
+    carryCargo(amount:numeric){
+        console.log(`Luggages is about: `+amount);
+
+    }
+}
+
+type vehicle = Car | Truck;
+
+function Ride(eng:vehicle){
 
 }
-console.log(check);
-
