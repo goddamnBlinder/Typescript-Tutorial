@@ -277,6 +277,7 @@ console.log(move.meth());
 
 //*Intersecting multiple Types and Interfacce
  type Admin = {
+    name:string;
     position: string;
     roles: string[];
  }
@@ -284,7 +285,7 @@ console.log(move.meth());
  type Employ = {
     name:string;
     duties:number;
-
+    
  }
 
  type Deploy = Admin & Employ;
@@ -299,7 +300,7 @@ duties:23,
 
  console.log(mask);
 
- //it selects only the most frequent DT
+ //it selects only the most frequent DT which is number.
 
 type combine = number | string;
 type numeric = boolean | number;
@@ -310,12 +311,23 @@ let faggots: selects;
 faggots = 34;
 
 function Getter(a:combine,b:combine){
-    if (a === "string" || b === "string") {
+    if (typeof a === 'string' || typeof b === 'string') {
         a.toLocaleString() + b.toLocaleString();
-    }return 
+    }return
 }
 
-console.log(Getter(3,9));
- 
- 
+type selected = Admin | Employ;
+
+function check(ck:selected){
+    console.log('name: '+ck.name);
+
+    if('roles' in ck){
+        console.log('roles: '+ ck.roles);   
+    }if('duties' in ck){
+        console.log('duties: '+ ck.duties);
+        
+    }
+
+}
+console.log(check);
 

@@ -209,10 +209,19 @@ console.log(mask);
 let faggots;
 faggots = 34;
 function Getter(a, b) {
-    if (a === "string" || b === "string") {
+    if (typeof a === 'string' || typeof b === 'string') {
         a.toLocaleString() + b.toLocaleString();
     }
     return;
 }
-console.log(Getter(3, 9));
+function check(ck) {
+    console.log('name: ' + ck.name);
+    if ('roles' in ck) {
+        console.log('roles: ' + ck.roles);
+    }
+    if ('duties' in ck) {
+        console.log('duties: ' + ck.duties);
+    }
+}
+console.log(check);
 //# sourceMappingURL=main.js.map
