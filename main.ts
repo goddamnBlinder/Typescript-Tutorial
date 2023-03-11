@@ -360,3 +360,37 @@ const v1 = new Car();
 const v2 = new Truck();
 // console.log(v2.drive());
 Ride(v2);
+
+//*Discriminated Union Types in Typescript.
+
+interface bird {
+    type:'bird'
+    flyingSpeed: number;
+}
+interface snake {
+    type:'snake'
+    crawingspeed: number;
+}
+
+interface horse {
+    type:'horse'
+    runnningSpeed: number;
+}
+type move = snake | bird | horse
+
+function Terrestial(speed:move) {
+  let locomotive = 0;
+  switch (speed.type) {
+    case 'bird':
+        locomotive = speed.flyingSpeed;
+        break;
+    case 'horse':
+        locomotive = speed.runnningSpeed;
+        break
+    case 'snake':
+        locomotive = speed.crawingspeed;    
+    default:
+        break;
+  }
+}
+console.log(Terrestial);

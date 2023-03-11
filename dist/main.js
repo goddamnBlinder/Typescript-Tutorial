@@ -246,4 +246,20 @@ const v1 = new Car();
 const v2 = new Truck();
 // console.log(v2.drive());
 Ride(v2);
+function Terrestial(speed) {
+    let locomotive = 0;
+    switch (speed.type) {
+        case 'bird':
+            locomotive = speed.flyingSpeed;
+            break;
+        case 'horse':
+            locomotive = speed.runnningSpeed;
+            break;
+        case 'snake':
+            locomotive = speed.crawingspeed;
+        default:
+            break;
+    }
+}
+console.log(Terrestial);
 //# sourceMappingURL=main.js.map
