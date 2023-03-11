@@ -237,7 +237,7 @@ class Truck {
     }
 }
 function Ride(engine) {
-    console.log(engine.drive());
+    engine.drive();
     if (engine instanceof Truck) {
         engine.carryCargo(30);
     }

@@ -349,7 +349,7 @@ class Truck {
 type vehicle = Car | Truck;
 
 function Ride(engine:vehicle):void{
-   console.log(engine.drive());
+        engine.drive();
    if(engine instanceof Truck){
        engine.carryCargo(30);
    }
