@@ -257,9 +257,24 @@ function Terrestial(speed) {
             break;
         case 'snake':
             locomotive = speed.crawingspeed;
-        default:
             break;
     }
+    console.log(`it takes the creature ${locomotive} km/h to arrive at it's destination`);
 }
-console.log(Terrestial);
+const snake = {
+    crawingspeed: 30,
+    type: 'snake'
+};
+const horse = {
+    type: 'horse',
+    runnningSpeed: 55,
+};
+const bird = {
+    type: 'bird',
+    flyingSpeed: 80,
+};
+Terrestial(horse);
+//Typescasting: casting recognize values in DOM.
+const dom = document.querySelector("#number1");
+dom.value = 'Chinweike';
 //# sourceMappingURL=main.js.map

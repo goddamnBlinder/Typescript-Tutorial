@@ -362,6 +362,8 @@ const v2 = new Truck();
 Ride(v2);
 
 //*Discriminated Union Types in Typescript.
+/*Using the type para in the interfaces to describe them while
+ implementating them in switch statements other than using the 'In' properties in IF's*/
 
 interface bird {
     type:'bird'
@@ -389,8 +391,29 @@ function Terrestial(speed:move) {
         break
     case 'snake':
         locomotive = speed.crawingspeed;    
-    default:
-        break;
-  }
+        break      
+    }
+    console.log(`it takes the creature ${locomotive} km/h to arrive at it's destination`);
 }
-console.log(Terrestial);
+
+const snake: snake = {
+  crawingspeed: 30,
+  type: 'snake'
+}
+
+const horse: horse = {
+type:'horse',
+runnningSpeed: 55,
+}
+const bird: bird = {
+type: 'bird',
+flyingSpeed: 80,
+}
+
+Terrestial(horse)
+
+//Typescasting: casting recognize values in DOM.
+
+const dom = <HTMLInputElement>document.querySelector("#number1");
+dom.value = 'Chinweike'
+
