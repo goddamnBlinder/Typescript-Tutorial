@@ -309,12 +309,26 @@ type selects = combine & numeric;
 
 let faggots: selects;
 faggots = 34;
+//--------------------------------------------------//
+//? function Overload.
+//* How we handle functions the Typescript isn't aware about.
+//*writing all possible DT in a function using an overload.
 
-function Getter(a:combine, b:combine):void{
+function Getter(a:string, b:string): string;
+function Getter(a: number, b: number):number;
+function Getter(a:string, b:number):string;
+function Getter(a:number, b:string):number;
+
+function Getter(a:combine, b:combine){
     if (typeof a === 'string' || typeof b === 'string') {
-        a.toLocaleString() + b.toLocaleString();
+      return  a.toLocaleString() + b.toLocaleString();
     }
+    return a+b;
 }
+const get = Getter('Di','Bollical');
+get.split("")
+console.log(get);
+
 
 type selected = Admin | Employ;
 
@@ -417,4 +431,17 @@ Terrestial(horse)
 const dom = document.querySelector("#number1")
 if(dom){
     (dom as HTMLInputElement).value= 'Chinweike';
+}
+
+//Index Type Property
+interface container {
+    id_number:number
+    prop:string;
+}
+
+let contain:container = {
+    // email: "Error in Email verification",
+    id_number: 13,
+    prop: "short fro property",
+ 
 }

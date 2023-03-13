@@ -210,9 +210,13 @@ let faggots;
 faggots = 34;
 function Getter(a, b) {
     if (typeof a === 'string' || typeof b === 'string') {
-        a.toLocaleString() + b.toLocaleString();
+        return a.toLocaleString() + b.toLocaleString();
     }
+    return a + b;
 }
+const get = Getter('Di', 'Bollical');
+get.split("");
+console.log(get);
 function check(emp) {
     console.log('name: ' + emp.name);
     if ('roles' in emp) {
@@ -279,4 +283,9 @@ const dom = document.querySelector("#number1");
 if (dom) {
     dom.value = 'Chinweike';
 }
+let contain = {
+    // email: "Error in Email verification",
+    id_number: 13,
+    prop: "short fro property",
+};
 //# sourceMappingURL=main.js.map
