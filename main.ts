@@ -414,6 +414,9 @@ Terrestial(horse)
 
 //Typescasting: casting recognize values in DOM.
 
-const dom = <HTMLInputElement>document.querySelector("#number1");
-dom.value = 'Chinweike'
+const dom = document.querySelector("#number1")
+if(dom as H){
+    dom.value = 'Chinweike'
+
+}
 

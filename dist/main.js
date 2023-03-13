@@ -276,5 +276,7 @@ const bird = {
 Terrestial(horse);
 //Typescasting: casting recognize values in DOM.
 const dom = document.querySelector("#number1");
-dom.value = 'Chinweike';
+if (dom) {
+    dom.value = 'Chinweike';
+}
 //# sourceMappingURL=main.js.map
