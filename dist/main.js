@@ -259,7 +259,7 @@ function Terrestial(speed) {
             locomotive = speed.crawingspeed;
             break;
     }
-    console.log(`it takes the creature ${locomotive} km/h to arrive at it's destination`);
+    console.log(`it takes the animal ${locomotive} km/h to arrive at it's destination`);
 }
 const snake = {
     crawingspeed: 30,

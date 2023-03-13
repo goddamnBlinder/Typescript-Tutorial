@@ -393,7 +393,7 @@ function Terrestial(speed:move) {
         locomotive = speed.crawingspeed;    
         break      
     }
-    console.log(`it takes the creature ${locomotive} km/h to arrive at it's destination`);
+    console.log(`it takes the animal ${locomotive} km/h to arrive at it's destination`);
 }
 
 const snake: snake = {
@@ -415,8 +415,6 @@ Terrestial(horse)
 //Typescasting: casting recognize values in DOM.
 
 const dom = document.querySelector("#number1")
-if(dom as H){
-    dom.value = 'Chinweike'
-
+if(dom){
+    (dom as HTMLInputElement).value= 'Chinweike';
 }
-
