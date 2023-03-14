@@ -3,11 +3,13 @@ console.log("Login");
 class Department { 
 private employees: string[] = [];
 static financialyear = 2022;
+
     
-  constructor(private name:string, protected readonly id: string, employees:string[] = [] ){
+  constructor(private name:string, protected readonly id: string, employees:string[]){
     this.name = name;
     this.employees = employees;
     this.id = id;
+
   }
 //*Adding Methods
 addEmployees(employees:string){
@@ -33,7 +35,7 @@ describe(this:Department):void{
 class ITdepartment extends Department {
 
     constructor(name:string, id:string , private it:string[] = []){
-    super(name, id)
+    super(name, id, it)
 
     }
     addIT(employees:string){
@@ -47,7 +49,7 @@ class ITdepartment extends Department {
 }
 class Accounting extends Department{
     constructor(id:string, name:string, private reports:string[] = [] ){
-        super(id, name)
+        super(id, name, reports)
         
     }
     //*Getters and Setters
@@ -94,7 +96,7 @@ class Accounting extends Department{
     }    
 }
 
-let department = new Department('accounting', 'd1');
+let department = new Department('accounting', 'd1', []);
 // console.log(department);
 
 let It = new ITdepartment('It', 'secondClass');
@@ -179,22 +181,28 @@ class smallDepartment extends newDepartment {
 }  
 
 //? Singleton design pattern of a class and private constructor
+//this a design pattern used to know all that is contained in a class without declaring the Object of that class. 
+//?--------------------------------------------------------------------//
 
 class Singleton extends Department {
     private static focus: Singleton;
-    private constructor(name:string, id:string, protected num: number){
-        super(name, id);
+    private constructor(name:string, id:string, protected num: number,   private it:string[] = []){
+        super(name,id, it);
         this.num = num;
+        
     }
     static getInstance(){
         if (Singleton.focus) {
             return Singleton.focus
-        }Singleton.focus = new Singleton("Joan", "Leela" ,23);
+        }Singleton.focus = new Singleton("Joan", "Leela" ,23, []);
         return  Singleton.focus
     }
 }   
 let Instance = Singleton.getInstance();
 console.log(Instance);
+//?------------------------------------------------------------------------//
+
+
 //*Interface 
 //* helps to describe a block of code (objects, Class, Functions) Data Types
 
@@ -273,6 +281,26 @@ class Moveto implements Thereis{
 let move = new Moveto("Ye", 21);
 
 console.log(move.meth());
+//--------------------------------------------------//
+//? function Overload.
+//* How we handle functions the Typescript isn't aware about.
+//*writing all possible DT in a function using an overload.
+
+function Getter(a:string, b:string): string;
+function Getter(a: number, b: number):number;
+function Getter(a:string, b:number):string;
+function Getter(a:number, b:string):number;
+
+function Getter(a:combine, b:combine){
+    if (typeof a === 'string' || typeof b === 'string') {
+      return  a.toLocaleString() + b.toLocaleString();
+    }
+    return a+b;
+}
+const get = Getter('Di--','--Bollical');
+get.split("")
+console.log(get);
+//------------------------------------------------------------------------------------//
 
 
 //*Intersecting multiple Types and Interfacce
@@ -309,25 +337,7 @@ type selects = combine & numeric;
 
 let faggots: selects;
 faggots = 34;
-//--------------------------------------------------//
-//? function Overload.
-//* How we handle functions the Typescript isn't aware about.
-//*writing all possible DT in a function using an overload.
 
-function Getter(a:string, b:string): string;
-function Getter(a: number, b: number):number;
-function Getter(a:string, b:number):string;
-function Getter(a:number, b:string):number;
-
-function Getter(a:combine, b:combine){
-    if (typeof a === 'string' || typeof b === 'string') {
-      return  a.toLocaleString() + b.toLocaleString();
-    }
-    return a+b;
-}
-const get = Getter('Di','Bollical');
-get.split("")
-console.log(get);
 
 
 type selected = Admin | Employ;
@@ -435,13 +445,52 @@ if(dom){
 
 //Index Type Property
 interface container {
-    id_number:number
-    prop:string;
+    // id:number 
+  [prop:string]:string
 }
 
 let contain:container = {
-    // email: "Error in Email verification",
-    id_number: 13,
+    email: "Error in Email verification",
+    id_number: '13',
     prop: "short fro property",
- 
+
 }
+console.log(contain.email);
+
+//*Optional properties chaining and Null coalescing
+//Optional proprty.
+let Userdata = {
+    name:'leela',
+    job: {title: 'cleanner', salary: '$120', workingHours: 2+'Hrs'},
+
+}
+console.log(Userdata?.job?.salary);
+
+//Null coalescing
+//if it is null or undefined, take the default value.
+
+let userInput:unknown = null
+
+let storedInput = userInput ?? 'DEFAULT';
+console.log(storedInput);
+
+//*GENERICS 🥟
+//Built--in Generics
+//Generics in TypeScript allow you to create reusable code components that can work with multiple data types. 
+//They enable you to write more flexible and type-safe code.
+
+//*the array of string and the promise of string
+
+/*let set:Array<string> = []
+
+let promise:Promise<string> = new Promise((resolve, reject) => {
+      setTimeout(() => {
+       resolve('The expected Resolved data')
+      }, 4000)
+
+ promise.then((value)=>{
+    value.split('') })
+    .catch(error => console.log(error));
+});
+
+*/
