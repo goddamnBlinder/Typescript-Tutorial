@@ -305,7 +305,7 @@ console.log((_a = Userdata === null || Userdata === void 0 ? void 0 : Userdata.j
 let userInput = null;
 let storedInput = userInput !== null && userInput !== void 0 ? userInput : 'DEFAULT';
 console.log(storedInput);
-//*GENERICS 🥟
+//!GENERICS 🥟
 //Built--in Generics
 //Generics in TypeScript allow you to create reusable code components that can work with multiple data types. 
 //They enable you to write more flexible and type-safe code.
@@ -340,4 +340,21 @@ function countasDescribe(element) {
     return [element, text];
 }
 console.log(countasDescribe(['ggsgd', 'fvefefb', 'hbefbfjb', 'ehbfkf']));
+//Using the keyof as a constrain.
+function Constrain(obj, key) {
+    return obj[key];
+}
+console.log(Constrain({ name: "jerry", age: 27, status: "NEET" }, 'age'));
+//*Generics in Classes.
+class dataStorage {
+    constructor() {
+        this.data = [];
+    }
+    addItem(item) {
+        this.data.push(item);
+    }
+    removeItem(item) {
+        this.data.pop(this.data.indexOf(item), 1);
+    }
+}
 //# sourceMappingURL=main.js.map

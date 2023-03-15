@@ -476,7 +476,7 @@ let userInput:unknown = null
 let storedInput = userInput ?? 'DEFAULT';
 console.log(storedInput);
 
-//*GENERICS 🥟
+//!GENERICS 🥟
 //Built--in Generics
 //Generics in TypeScript allow you to create reusable code components that can work with multiple data types. 
 //They enable you to write more flexible and type-safe code.
@@ -522,6 +522,26 @@ function countasDescribe<T extends lengthy>(element:T):[T, string]{
     }if (element.length > 1) {
        text = element.length + ' word found' 
     }
-    return [element, text]
+     return [element, text]
 }
 console.log(countasDescribe(['ggsgd', 'fvefefb', 'hbefbfjb', 'ehbfkf'], ));
+
+//Using the keyof as a constrain.
+
+function Constrain<U extends Object, T extends keyof U >(obj:U, key:T){
+  return obj[key];
+}
+console.log(Constrain({name:"jerry", age:27, status: "NEET"},'age'));
+
+//*Generics in Classes.
+
+class dataStorage {
+    public data:Array<string> = [];
+
+ addItem(item:string):void{
+  this.data.push(item);
+ }
+ removeItem(item:string):void{
+ this.data.pop(this.data.indexOf(item),1)
+ }
+}
