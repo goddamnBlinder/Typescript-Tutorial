@@ -535,13 +535,43 @@ console.log(Constrain({name:"jerry", age:27, status: "NEET"},'age'));
 
 //*Generics in Classes.
 
-class dataStorage {
-    public data:Array<string> = [];
+class dataStorage<T> {
+    public data:Array<T> = [];
 
- addItem(item:string):void{
-  this.data.push(item);
- }
- removeItem(item:string):void{
- this.data.pop(this.data.indexOf(item),1)
- }
+    addItem(item:T):void{
+    this.data.push(item);
+    }
+    removeItem(item:T):void{
+    this.data.splice(this.data.indexOf(item),1)
+    }
+    getItems():void{
+        [...this.data]
+    }
 }
+const storage = new dataStorage<string>();
+storage.addItem('Ghost'),
+storage.addItem('Ryder'),
+storage.addItem('cider'),
+storage.addItem('Onion');
+
+storage.removeItem('');
+
+
+console.log(storage.data);
+
+const numberStorage = new dataStorage<numeric>();
+numberStorage.addItem(1)
+numberStorage.addItem(2)
+numberStorage.addItem(4);
+
+numberStorage.removeItem(3)
+console.log(numberStorage.data);
+
+const objectStorage = new dataStorage<object>();
+objectStorage.addItem({name: 'Leela' });
+objectStorage.addItem({ job: 'Midwife'})
+objectStorage.addItem({age: 30,})
+objectStorage.addItem({gender: 'female',})
+
+objectStorage.removeItem({})
+console.log(objectStorage.data);

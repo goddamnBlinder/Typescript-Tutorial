@@ -354,7 +354,30 @@ class dataStorage {
         this.data.push(item);
     }
     removeItem(item) {
-        this.data.pop(this.data.indexOf(item), 1);
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+    getItems() {
+        [...this.data];
     }
 }
+const storage = new dataStorage();
+storage.addItem('Ghost'),
+    storage.addItem('Ryder'),
+    storage.addItem('cider'),
+    storage.addItem('Onion');
+storage.removeItem('');
+console.log(storage.data);
+const numberStorage = new dataStorage();
+numberStorage.addItem(1);
+numberStorage.addItem(2);
+numberStorage.addItem(4);
+numberStorage.removeItem(3);
+console.log(numberStorage.data);
+const objectStorage = new dataStorage();
+objectStorage.addItem({ name: 'Leela' });
+objectStorage.addItem({ job: 'Midwife' });
+objectStorage.addItem({ age: 30, });
+objectStorage.addItem({ gender: 'female', });
+objectStorage.removeItem({});
+console.log(objectStorage.data);
 //# sourceMappingURL=main.js.map
