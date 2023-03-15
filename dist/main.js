@@ -4,7 +4,6 @@ console.log("Login");
 //? Inheritance 
 class Department {
     constructor(name, id, employees) {
-        this.name = name;
         this.id = id;
         this.employees = [];
         this.name = name;
@@ -83,8 +82,9 @@ class Accounting extends Department {
         console.log('this accounting unit with Id: ' + this.id);
     }
 }
-let department = new Department('accounting', 'd1', []);
-// console.log(department);
+let department = new Department('Department', 'd1', ['Pink-shoe']);
+// department.name = 'adul'; 
+console.log(department);
 let It = new ITdepartment('It', 'secondClass');
 // console.log(It);
 let accounting = new Accounting('Account', 'A1', []);
@@ -310,9 +310,9 @@ console.log(storedInput);
 //Generics in TypeScript allow you to create reusable code components that can work with multiple data types. 
 //They enable you to write more flexible and type-safe code.
 //*the array of string and the promise of string
-/*let set:Array<string> = []
-
-let promise:Promise<string> = new Promise((resolve, reject) => {
+let set = ['Generic'];
+console.log(set);
+/* let promise:Promise<string> = new Promise((resolve, reject) => {
       setTimeout(() => {
        resolve('The expected Resolved data')
       }, 4000)
@@ -321,6 +321,6 @@ let promise:Promise<string> = new Promise((resolve, reject) => {
     value.split('') })
     .catch(error => console.log(error));
 });
-
-*/ 
+*/
+//*Generic function 
 //# sourceMappingURL=main.js.map

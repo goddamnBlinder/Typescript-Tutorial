@@ -3,9 +3,10 @@ console.log("Login");
 class Department { 
 private employees: string[] = [];
 static financialyear = 2022;
+name;
 
     
-  constructor(private name:string, protected readonly id: string, employees:string[]){
+  constructor(name:string, protected readonly id: string, employees:string[]){
     this.name = name;
     this.employees = employees;
     this.id = id;
@@ -96,8 +97,9 @@ class Accounting extends Department{
     }    
 }
 
-let department = new Department('accounting', 'd1', []);
-// console.log(department);
+let department = new Department('Department', 'd1', ['Pink-shoe']);
+// department.name = 'adul'; 
+console.log(department);
 
 let It = new ITdepartment('It', 'secondClass');
 // console.log(It);
@@ -481,9 +483,11 @@ console.log(storedInput);
 
 //*the array of string and the promise of string
 
-/*let set:Array<string> = []
+let set:Array<string> = ['Generic']
+console.log(set);
 
-let promise:Promise<string> = new Promise((resolve, reject) => {
+
+/* let promise:Promise<string> = new Promise((resolve, reject) => {
       setTimeout(() => {
        resolve('The expected Resolved data')
       }, 4000)
@@ -492,5 +496,6 @@ let promise:Promise<string> = new Promise((resolve, reject) => {
     value.split('') })
     .catch(error => console.log(error));
 });
-
 */
+
+//*Generic function 
