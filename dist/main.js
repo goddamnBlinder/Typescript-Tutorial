@@ -329,15 +329,15 @@ function merge(obj, obj1) {
 }
 const mer = merge({ name: 'Leela' }, { age: 23 });
 console.log(mer.name);
-function merg(objA, ObjB) {
-    return Object.assign(objA, ObjB);
+function countasDescribe(element) {
+    let text = "No text found";
+    if (element.length === 1) {
+        text = 'Only 1 word found';
+    }
+    if (element.length > 1) {
+        text = element.length + ' word found';
+    }
+    return [element, text];
 }
-const marge = merg({
-    name: 'ambruose',
-    hobbies: ["Hiking"]
-}, {
-    name: "Paulette",
-    age: 17,
-    hobbies: ["Talking"],
-});
+console.log(countasDescribe(['ggsgd', 'fvefefb', 'hbefbfjb', 'ehbfkf']));
 //# sourceMappingURL=main.js.map

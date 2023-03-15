@@ -511,15 +511,17 @@ const mer = merge({name: 'Leela'}, {age: 23}) as {
 };
 console.log(mer.name);
 
-function merg<T, U>(objA:T , ObjB: U){
- return Object.assign(objA, ObjB) ;
+interface lengthy {
+    length: number;
 }
 
-const marge = merg<{name:string, hobbies:string[]},{age:number, name:string, hobbies:string[]}>({
-    name:'ambruose',
-    hobbies:["Hiking"]}, 
-    {
-      name:"Paulette",
-      age:17,
-      hobbies:["Talking"],
-    })
+function countasDescribe<T extends lengthy>(element:T):[T, string]{
+   let text = "No text found";
+    if(element.length === 1){
+     text = 'Only 1 word found'
+    }if (element.length > 1) {
+       text = element.length + ' word found' 
+    }
+    return [element, text]
+}
+console.log(countasDescribe(['ggsgd', 'fvefefb', 'hbefbfjb', 'ehbfkf'], ));
