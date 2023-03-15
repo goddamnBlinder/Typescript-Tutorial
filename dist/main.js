@@ -323,4 +323,21 @@ console.log(set);
 });
 */
 //*Generic function 
+//matchng 2 Objcts DT.
+function merge(obj, obj1) {
+    return Object.assign(obj, obj1);
+}
+const mer = merge({ name: 'Leela' }, { age: 23 });
+console.log(mer.name);
+function merg(objA, ObjB) {
+    return Object.assign(objA, ObjB);
+}
+const marge = merg({
+    name: 'ambruose',
+    hobbies: ["Hiking"]
+}, {
+    name: "Paulette",
+    age: 17,
+    hobbies: ["Talking"],
+});
 //# sourceMappingURL=main.js.map

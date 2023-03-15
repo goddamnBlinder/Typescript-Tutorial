@@ -499,3 +499,27 @@ console.log(set);
 */
 
 //*Generic function 
+//matchng 2 Objcts DT.
+
+function merge(obj: object, obj1:object){
+   return Object.assign(obj,obj1)
+}
+
+const mer = merge({name: 'Leela'}, {age: 23}) as {
+    name:string,
+    age:number,
+};
+console.log(mer.name);
+
+function merg<T, U>(objA:T , ObjB: U){
+ return Object.assign(objA, ObjB) ;
+}
+
+const marge = merg<{name:string, hobbies:string[]},{age:number, name:string, hobbies:string[]}>({
+    name:'ambruose',
+    hobbies:["Hiking"]}, 
+    {
+      name:"Paulette",
+      age:17,
+      hobbies:["Talking"],
+    })
