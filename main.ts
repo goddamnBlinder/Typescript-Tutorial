@@ -635,7 +635,6 @@ function component(template: string, hookID: string){
 @component('<h1> Hello Boys </h1>', 'App')
 
 
-//* applying the decortors to the property as well.
 class comrade {
     public name = 'serge Bucky';
     constructor(){
@@ -647,3 +646,31 @@ class comrade {
 //bottom to top execution 
 // let green = new comrade ();
 // console.log(green);
+
+//* applying the decortors to the property as well.
+function oblivion(params:string, input:string) {
+}
+
+class Tax {
+    //  public title:string
+    //  private _payment 
+
+    
+    @oblivion("El Savaldo", 'There a thump')
+    set payment(value: number){
+        if (value > 1) {
+            value = this._payment
+        }else{
+            throw new Error("Input must be integer");
+            
+        }
+    }
+
+     constructor(public title:string, private _payment:string){
+         this.title = title;
+         this._payment = _payment
+     }
+     taxGen(value:string):void{
+        value * this._payment
+     }
+}

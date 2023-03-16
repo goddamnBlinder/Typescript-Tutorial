@@ -419,9 +419,7 @@ function component(template, hookID) {
         }
     };
 }
-let comrade = 
-//* applying the decortors to the property as well.
-class comrade {
+let comrade = class comrade {
     constructor() {
         this.name = 'serge Bucky';
         console.log('Comrade in battle....');
@@ -430,9 +428,35 @@ class comrade {
 comrade = __decorate([
     serge("in Green"),
     component('<h1> Hello Boys </h1>', 'App')
-    //* applying the decortors to the property as well.
 ], comrade);
 //bottom to top execution 
 // let green = new comrade ();
 // console.log(green);
+//* applying the decortors to the property as well.
+function oblivion(params, input) {
+}
+class Tax {
+    //  public title:string
+    //  private _payment 
+    set payment(value) {
+        if (value > 1) {
+            value = this._payment;
+        }
+        else {
+            throw new Error("Input must be integer");
+        }
+    }
+    constructor(title, _payment) {
+        this.title = title;
+        this._payment = _payment;
+        this.title = title;
+        this._payment = _payment;
+    }
+    taxGen(value) {
+        value * this._payment;
+    }
+}
+__decorate([
+    oblivion("El Savaldo", 'There a thump')
+], Tax.prototype, "payment", null);
 //# sourceMappingURL=main.js.map
