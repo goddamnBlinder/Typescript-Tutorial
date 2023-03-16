@@ -603,18 +603,39 @@ function addUtil(
 let leela:  Readonly<string[]> = ['LMAO', 'LOL']
 console.log(leela);
 
-//*Dcorators 
+//*Dcorators 🍞
 //Allows extends the functionality
 // of classes and methods in declaring&Assigning the function.
 //it helps claasses to execute without instantiating an Object.
+//? creating a decorator with a decorator factory.(anonimously)
+//*Angular component decorator (component)
 
-function serge(constructor:Function):void{
-    console.log('sergent...');
-    console.log(constructor);
-     
+function serge(local:string){
+    console.log('serge Qaurters');
+   return (constructor:Function) => {
+        console.log('sergent...' + local);
+        // console.log(constructor); 
+    }  
 }
 
-@serge
+function component(template: string, hookID: string){
+    console.log('componential');
+  return (constructor:any) => {
+        let ID = document?.querySelector('#decorate');
+        let data = new constructor()
+        if(ID){
+            ID.textContent = template;
+            ID.querySelector('h1')!.textContent = data.name;
+        }
+    }
+}
+
+
+@serge("in Green")
+@component('<h1> Hello Boys </h1>', 'App')
+
+
+//* applying the decortors to the property as well.
 class comrade {
     public name = 'serge Bucky';
     constructor(){
@@ -623,5 +644,6 @@ class comrade {
     }
 }
 
+//bottom to top execution 
 // let green = new comrade ();
 // console.log(green);

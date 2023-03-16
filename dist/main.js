@@ -395,23 +395,44 @@ function addUtil(description, addedDate, occupation) {
 }
 let leela = ['LMAO', 'LOL'];
 console.log(leela);
-//*Dcorators 
+//*Dcorators 🍞
 //Allows extends the functionality
 // of classes and methods in declaring&Assigning the function.
 //it helps claasses to execute without instantiating an Object.
-function serge(constructor) {
-    console.log('sergent...');
-    console.log(constructor);
+//? creating a decorator with a decorator factory.(anonimously)
+//*Angular component decorator (component)
+function serge(local) {
+    console.log('serge Qaurters');
+    return (constructor) => {
+        console.log('sergent...' + local);
+        // console.log(constructor); 
+    };
 }
-let comrade = class comrade {
+function component(template, hookID) {
+    console.log('componential');
+    return (constructor) => {
+        let ID = document === null || document === void 0 ? void 0 : document.querySelector('#decorate');
+        let data = new constructor();
+        if (ID) {
+            ID.textContent = template;
+            ID.querySelector('h1').textContent = data.name;
+        }
+    };
+}
+let comrade = 
+//* applying the decortors to the property as well.
+class comrade {
     constructor() {
         this.name = 'serge Bucky';
         console.log('Comrade in battle....');
     }
 };
 comrade = __decorate([
-    serge
+    serge("in Green"),
+    component('<h1> Hello Boys </h1>', 'App')
+    //* applying the decortors to the property as well.
 ], comrade);
+//bottom to top execution 
 // let green = new comrade ();
 // console.log(green);
 //# sourceMappingURL=main.js.map
