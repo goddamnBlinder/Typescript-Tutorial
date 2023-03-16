@@ -575,3 +575,29 @@ objectStorage.addItem({gender: 'female',})
 
 objectStorage.removeItem({})
 console.log(objectStorage.data);
+
+//*Using different Generic utility.
+//Partial Readonly
+
+interface Util {
+    description: string,
+    addedDate:Date,
+    occupation:string
+}
+
+function addUtil(
+    description: string,
+    addedDate:Date,
+    occupation:string
+):Util{
+    let utility: Partial<Util> = {}
+    
+    utility.description = description;
+    utility.addedDate = addedDate;
+    utility.occupation = occupation;
+
+
+    return<Util>utility
+}
+
+let leela: readonly <string[]> = ['LMAO', 'LOL']

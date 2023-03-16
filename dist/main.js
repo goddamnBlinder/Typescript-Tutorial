@@ -380,4 +380,12 @@ objectStorage.addItem({ age: 30, });
 objectStorage.addItem({ gender: 'female', });
 objectStorage.removeItem({});
 console.log(objectStorage.data);
+function addUtil(description, addedDate, occupation) {
+    let utility = {};
+    utility.description = description;
+    utility.addedDate = addedDate;
+    utility.occupation = occupation;
+    return utility;
+}
+let leela = ['LMAO', 'LOL'];
 //# sourceMappingURL=main.js.map
