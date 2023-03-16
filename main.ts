@@ -601,7 +601,27 @@ function addUtil(
 }
 
 let leela:  Readonly<string[]> = ['LMAO', 'LOL']
-leela.push('LAME')
-leela.pop('')
 console.log(leela);
 
+//*Dcorators 
+//Allows extends the functionality
+// of classes and methods in declaring&Assigning the function.
+//it helps claasses to execute without instantiating an Object.
+
+function serge(constructor:Function):void{
+    console.log('sergent...');
+    console.log(constructor);
+     
+}
+
+@serge
+class comrade {
+    public name = 'serge Bucky';
+    constructor(){
+        console.log('Comrade in battle....');
+        
+    }
+}
+
+// let green = new comrade ();
+// console.log(green);

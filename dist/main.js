@@ -1,4 +1,10 @@
 "use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var _a;
 console.log("Login");
 //? Inheritance 
@@ -388,7 +394,24 @@ function addUtil(description, addedDate, occupation) {
     return utility;
 }
 let leela = ['LMAO', 'LOL'];
-leela.push('LAME');
-leela.pop('');
 console.log(leela);
+//*Dcorators 
+//Allows extends the functionality
+// of classes and methods in declaring&Assigning the function.
+//it helps claasses to execute without instantiating an Object.
+function serge(constructor) {
+    console.log('sergent...');
+    console.log(constructor);
+}
+let comrade = class comrade {
+    constructor() {
+        this.name = 'serge Bucky';
+        console.log('Comrade in battle....');
+    }
+};
+comrade = __decorate([
+    serge
+], comrade);
+// let green = new comrade ();
+// console.log(green);
 //# sourceMappingURL=main.js.map
