@@ -577,7 +577,7 @@ objectStorage.removeItem({})
 console.log(objectStorage.data);
 
 //*Using different Generic utility.
-//Partial Readonly
+//Partial & Readonly
 
 interface Util {
     description: string,
@@ -600,4 +600,8 @@ function addUtil(
     return<Util>utility
 }
 
-let leela: readonly <string[]> = ['LMAO', 'LOL']
+let leela:  Readonly<string[]> = ['LMAO', 'LOL']
+leela.push('LAME')
+leela.pop('')
+console.log(leela);
+

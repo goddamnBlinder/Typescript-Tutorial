@@ -388,4 +388,7 @@ function addUtil(description, addedDate, occupation) {
     return utility;
 }
 let leela = ['LMAO', 'LOL'];
+leela.push('LAME');
+leela.pop('');
+console.log(leela);
 //# sourceMappingURL=main.js.map
