@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var _a;
 console.log("Login");
 //? Inheritance 
@@ -64,7 +67,7 @@ class Accounting extends Department {
     }
     //*----------------------------------------------------------//
     //* Static Methods 
-    //this doesnt work here cuz this method is not an focus of the class and can be call anywhere.
+    //this doesnt work here cuz this method is not an target of the class and can be call anywhere.
     static createEmployees(name) {
         return { name: name };
     }
@@ -158,11 +161,11 @@ class Singleton extends Department {
         this.num = num;
     }
     static getInstance() {
-        if (Singleton.focus) {
-            return Singleton.focus;
+        if (Singleton.target) {
+            return Singleton.target;
         }
-        Singleton.focus = new Singleton("Joan", "Leela", 23, []);
-        return Singleton.focus;
+        Singleton.target = new Singleton("Joan", "Leela", 23, []);
+        return Singleton.target;
     }
 }
 let Instance = Singleton.getInstance();
@@ -433,14 +436,28 @@ comrade = __decorate([
 // let green = new comrade ();
 // console.log(green);
 //* applying the decortors to the property as well.
-function customer(target, propertyName) {
-    console.log('Accessor decorator');
+function log(target, propertyName) {
+    console.log('property decorator');
     console.log(target);
     console.log(propertyName);
 }
-function custom(focus, name, descriptor) {
-    console.log(focus);
+function log2(target, name, descriptor) {
+    console.log('Accessor decorator');
+    console.log(target);
     console.log(name);
+    console.log(descriptor);
+}
+function log3(target, name, descriptor) {
+    console.log('method decorator');
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+}
+function log4(target, name, prop) {
+    console.log('parameters decorator');
+    console.log(target);
+    console.log(name);
+    console.log(prop);
 }
 class shop {
     set input(value) {
@@ -460,9 +477,13 @@ class shop {
     }
 }
 __decorate([
-    customer
+    log
 ], shop.prototype, "costPrice", void 0);
 __decorate([
-    custom
+    log2
 ], shop.prototype, "input", null);
+__decorate([
+    log3,
+    __param(0, log4)
+], shop.prototype, "VAT", null);
 //# sourceMappingURL=main.js.map

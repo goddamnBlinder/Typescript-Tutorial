@@ -70,7 +70,7 @@ class Accounting extends Department{
 //*----------------------------------------------------------//
 
 //* Static Methods 
-//this doesnt work here cuz this method is not an focus of the class and can be call anywhere.
+//this doesnt work here cuz this method is not an target of the class and can be call anywhere.
     static createEmployees(name:string) {
       return {name: name}
      }
@@ -187,17 +187,17 @@ class smallDepartment extends newDepartment {
 //?--------------------------------------------------------------------//
 
 class Singleton extends Department {
-    private static focus: Singleton;
+    private static target: Singleton;
     private constructor(name:string, id:string, protected num: number,   private it:string[] = []){
         super(name,id, it);
         this.num = num;
         
     }
     static getInstance(){
-        if (Singleton.focus) {
-            return Singleton.focus
-        }Singleton.focus = new Singleton("Joan", "Leela" ,23, []);
-        return  Singleton.focus
+        if (Singleton.target) {
+            return Singleton.target
+        }Singleton.target = new Singleton("Joan", "Leela" ,23, []);
+        return  Singleton.target
     }
 }   
 let Instance = Singleton.getInstance();
@@ -649,24 +649,40 @@ class comrade {
 
 //* applying the decortors to the property as well.
 
-function customer(target:any, propertyName:string){
-    console.log('Accessor decorator');
+function log(target:any, propertyName:string):void{
+    console.log('property decorator');
     console.log(target);
     console.log(propertyName);   
 }
 
-function  custom(focus:any, name: string, descriptor: PropertyDecorator ){
-    console.log(focus);
+function  log2(target:any, name: string, descriptor: PropertyDescriptor ):void{
+    console.log('Accessor decorator');
+    console.log(target);
     console.log(name);
+    console.log(descriptor);
+    
+}
+function  log3(target:any, name: string, descriptor: PropertyDescriptor ):void{
+    console.log('method decorator');
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+    
+}
+function  log4(target:any, name: string, prop: number ):void{
+    console.log('parameters decorator');
+    console.log(target);
+    console.log(name);
+    console.log(prop);
     
 }
 
 class shop {
-    @customer
+    @log
     costPrice:string;
     price:number;
 
-    @custom
+    @log2
     set input(value:number){
       if(value > 0){
        this.price = value;
@@ -679,7 +695,8 @@ class shop {
        this.costPrice = costPrice;
        this.price = price
     }
-    VAT(tax:number):void{
+    @log3
+    VAT( @log4 tax:number):void{
      this.price + tax;
     }
 }
