@@ -648,29 +648,38 @@ class comrade {
 // console.log(green);
 
 //* applying the decortors to the property as well.
-function oblivion(params:string, input:string) {
+
+function customer(target:any, propertyName:string){
+    console.log('Accessor decorator');
+    console.log(target);
+    console.log(propertyName);   
 }
 
-class Tax {
-    //  public title:string
-    //  private _payment 
-
+function  custom(focus:any, name: string, descriptor: PropertyDecorator ){
+    console.log(focus);
+    console.log(name);
     
-    @oblivion("El Savaldo", 'There a thump')
-    set payment(value: number){
-        if (value > 1) {
-            value = this._payment
-        }else{
-            throw new Error("Input must be integer");
-            
-        }
+}
+
+class shop {
+    @customer
+    costPrice:string;
+    price:number;
+
+    @custom
+    set input(value:number){
+      if(value > 0){
+       this.price = value;
+      }else {
+        throw new Error("price should be positive");
+      }
     }
 
-     constructor(public title:string, private _payment:string){
-         this.title = title;
-         this._payment = _payment
-     }
-     taxGen(value:string):void{
-        value * this._payment
-     }
+    constructor(costPrice:string, price:number){
+       this.costPrice = costPrice;
+       this.price = price
+    }
+    VAT(tax:number):void{
+     this.price + tax;
+    }
 }

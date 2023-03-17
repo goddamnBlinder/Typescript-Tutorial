@@ -433,30 +433,36 @@ comrade = __decorate([
 // let green = new comrade ();
 // console.log(green);
 //* applying the decortors to the property as well.
-function oblivion(params, input) {
+function customer(target, propertyName) {
+    console.log('Accessor decorator');
+    console.log(target);
+    console.log(propertyName);
 }
-class Tax {
-    //  public title:string
-    //  private _payment 
-    set payment(value) {
-        if (value > 1) {
-            value = this._payment;
+function custom(focus, name, descriptor) {
+    console.log(focus);
+    console.log(name);
+}
+class shop {
+    set input(value) {
+        if (value > 0) {
+            this.price = value;
         }
         else {
-            throw new Error("Input must be integer");
+            throw new Error("price should be positive");
         }
     }
-    constructor(title, _payment) {
-        this.title = title;
-        this._payment = _payment;
-        this.title = title;
-        this._payment = _payment;
+    constructor(costPrice, price) {
+        this.costPrice = costPrice;
+        this.price = price;
     }
-    taxGen(value) {
-        value * this._payment;
+    VAT(tax) {
+        this.price + tax;
     }
 }
 __decorate([
-    oblivion("El Savaldo", 'There a thump')
-], Tax.prototype, "payment", null);
+    customer
+], shop.prototype, "costPrice", void 0);
+__decorate([
+    custom
+], shop.prototype, "input", null);
 //# sourceMappingURL=main.js.map
