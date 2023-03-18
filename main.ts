@@ -653,7 +653,7 @@ console.log(green);
 
 //* applying the decortors to the property, accessors and methods as well.
 
-function log(target:any, propertyName:string):void{
+function log1(target:any, propertyName:string):void{
     console.log('property decorator');
     console.log(target);
     console.log(propertyName);   
@@ -682,7 +682,7 @@ function  log4(target:any, name: string, position: number ):void{
 }
 
 class shop {
-    @log
+    @log1
     costPrice:string;
     price:number;
 
@@ -704,14 +704,25 @@ class shop {
      this.price + tax;
     }
 }
+//*Declaring a Return function in  a class Decorator.
+
+function blind(target:any, name: string, descriptor:PropertyDecorator){
+    console.log(target);
+    console.log(name)
+    console.log(descriptor);
+    
+    
+}
 
 class Bind {
+    
     name = 'leela';
     constructor(_t:string){
        this.name = _t
     }
-    bider(bid:string):void{
-     this.name + bid
+    bider():void{
+      console.log(this.name);
+       
     }
 }
 
@@ -719,6 +730,10 @@ const p = new Bind('');
 
 let button = document?.querySelector("#btn");
 
-button?.addEventListener('click', () => {
+button?.addEventListener('click', (e) => {
+    e.preventDefault()
+    console.log(p.bider());
     
+ 
+
 })

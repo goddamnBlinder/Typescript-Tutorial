@@ -443,7 +443,7 @@ comrade = __decorate([
 let green = new comrade();
 console.log(green);
 //* applying the decortors to the property, accessors and methods as well.
-function log(target, propertyName) {
+function log1(target, propertyName) {
     console.log('property decorator');
     console.log(target);
     console.log(propertyName);
@@ -484,7 +484,7 @@ class shop {
     }
 }
 __decorate([
-    log
+    log1
 ], shop.prototype, "costPrice", void 0);
 __decorate([
     log2
@@ -493,17 +493,25 @@ __decorate([
     log3,
     __param(0, log4)
 ], shop.prototype, "VAT", null);
+//*Declaring a Return function in  a class Decorator.
+function blind(target, name, descriptor) {
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+}
 class Bind {
     constructor(_t) {
         this.name = 'leela';
         this.name = _t;
     }
-    bider(bid) {
-        this.name + bid;
+    bider() {
+        console.log(this.name);
     }
 }
 const p = new Bind('');
 let button = document === null || document === void 0 ? void 0 : document.querySelector("#btn");
-button === null || button === void 0 ? void 0 : button.addEventListener('click', () => {
+button === null || button === void 0 ? void 0 : button.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(p.bider());
 });
 //# sourceMappingURL=main.js.map
