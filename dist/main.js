@@ -299,7 +299,7 @@ if (dom) {
 let contain = {
     email: "Error in Email verification",
     id_number: '13',
-    prop: "short fro property",
+    position: "short fro property",
 };
 console.log(contain.email);
 //*Optional properties chaining and Null coalescing
@@ -411,31 +411,38 @@ function serge(local) {
         // console.log(constructor); 
     };
 }
+//Returning the constructior  & extending from a class decorator.
 function component(template, hookID) {
-    console.log('componential');
-    return (constructor) => {
-        let ID = document === null || document === void 0 ? void 0 : document.querySelector('#decorate');
-        let data = new constructor();
-        if (ID) {
-            ID.textContent = template;
-            ID.querySelector('h1').textContent = data.name;
-        }
+    return function (constructor) {
+        return class extends constructor {
+            constructor(...args) {
+                super(name);
+                let ID = document === null || document === void 0 ? void 0 : document.querySelector('#decorate');
+                let data = new constructor();
+                if (ID) {
+                    ID.textContent = template;
+                    ID.querySelector('h1').textContent = this.name;
+                }
+            }
+        };
     };
 }
+;
 let comrade = class comrade {
     constructor() {
-        this.name = 'serge Bucky';
+        this.name = 'Bucky';
         console.log('Comrade in battle....');
     }
+    fn() { }
 };
 comrade = __decorate([
     serge("in Green"),
     component('<h1> Hello Boys </h1>', 'App')
 ], comrade);
-//bottom to top execution 
-// let green = new comrade ();
-// console.log(green);
-//* applying the decortors to the property as well.
+//*bottom to top execution 
+let green = new comrade();
+console.log(green);
+//* applying the decortors to the property, accessors and methods as well.
 function log(target, propertyName) {
     console.log('property decorator');
     console.log(target);
@@ -453,11 +460,11 @@ function log3(target, name, descriptor) {
     console.log(name);
     console.log(descriptor);
 }
-function log4(target, name, prop) {
+function log4(target, name, position) {
     console.log('parameters decorator');
     console.log(target);
     console.log(name);
-    console.log(prop);
+    console.log(position);
 }
 class shop {
     set input(value) {
@@ -486,4 +493,17 @@ __decorate([
     log3,
     __param(0, log4)
 ], shop.prototype, "VAT", null);
+class Bind {
+    constructor(_t) {
+        this.name = 'leela';
+        this.name = _t;
+    }
+    bider(bid) {
+        this.name + bid;
+    }
+}
+const p = new Bind('');
+let button = document === null || document === void 0 ? void 0 : document.querySelector("#btn");
+button === null || button === void 0 ? void 0 : button.addEventListener('click', () => {
+});
 //# sourceMappingURL=main.js.map

@@ -448,13 +448,13 @@ if(dom){
 //Index Type Property
 interface container {
     // id:number 
-  [prop:string]:string
+  [position:string]:string
 }
 
 let contain:container = {
     email: "Error in Email verification",
     id_number: '13',
-    prop: "short fro property",
+    position: "short fro property",
 
 }
 console.log(contain.email);
@@ -617,37 +617,41 @@ function serge(local:string){
         // console.log(constructor); 
     }  
 }
+//Returning the constructior  & extending from a class decorator.
 
 function component(template: string, hookID: string){
-    console.log('componential');
-  return (constructor:any) => {
-        let ID = document?.querySelector('#decorate');
-        let data = new constructor()
-        if(ID){
-            ID.textContent = template;
-            ID.querySelector('h1')!.textContent = data.name;
-        }
-    }
-}
+  return function<T extends { new (...args: any[]): {name:string} }> (constructor:T){
+        return class extends constructor {
+            constructor(...args:any){
+                super(name);
+                let ID = document?.querySelector('#decorate');
+                let data = new constructor()
+                if(ID){
+                    ID.textContent = template;
+                    ID.querySelector('h1')!.textContent = this.name;
+                }
+            }
+        };
+    };
+};
 
 
 @serge("in Green")
 @component('<h1> Hello Boys </h1>', 'App')
 
-
 class comrade {
-    public name = 'serge Bucky';
+    public name = 'Bucky';
     constructor(){
-        console.log('Comrade in battle....');
-        
+        console.log('Comrade in battle....');  
     }
+    fn(){}
 }
 
-//bottom to top execution 
-// let green = new comrade ();
-// console.log(green);
+//*bottom to top execution 
+let green = new comrade ();
+console.log(green);
 
-//* applying the decortors to the property as well.
+//* applying the decortors to the property, accessors and methods as well.
 
 function log(target:any, propertyName:string):void{
     console.log('property decorator');
@@ -669,11 +673,11 @@ function  log3(target:any, name: string, descriptor: PropertyDescriptor ):void{
     console.log(descriptor);
     
 }
-function  log4(target:any, name: string, prop: number ):void{
+function  log4(target:any, name: string, position: number ):void{
     console.log('parameters decorator');
     console.log(target);
     console.log(name);
-    console.log(prop);
+    console.log(position);
     
 }
 
@@ -700,3 +704,21 @@ class shop {
      this.price + tax;
     }
 }
+
+class Bind {
+    name = 'leela';
+    constructor(_t:string){
+       this.name = _t
+    }
+    bider(bid:string):void{
+     this.name + bid
+    }
+}
+
+const p = new Bind('');
+
+let button = document?.querySelector("#btn");
+
+button?.addEventListener('click', () => {
+    
+})
