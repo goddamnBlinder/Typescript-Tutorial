@@ -493,11 +493,18 @@ __decorate([
     log3,
     __param(0, log4)
 ], shop.prototype, "VAT", null);
-//*Declaring a Return function in  a class Decorator.
+//*Return property descriptor data from a method decorator 
 function blind(target, name, descriptor) {
-    console.log(target);
-    console.log(name);
     console.log(descriptor);
+    const auto = descriptor.value;
+    const autoblind = {
+        configurable: true,
+        enumerable: false,
+        get() {
+            return auto.bind(this);
+        }
+    };
+    return autoblind;
 }
 class Bind {
     constructor() {
@@ -507,9 +514,10 @@ class Bind {
         console.log(this.name);
     }
 }
-let button = document.querySelector("#button");
+__decorate([
+    blind
+], Bind.prototype, "bider", null);
+let button = document === null || document === void 0 ? void 0 : document.querySelector("#button");
 const p = new Bind();
-button.addEventListener('click', () => {
-    p.bider();
-});
+button.addEventListener('click', p.bider);
 //# sourceMappingURL=main.js.map

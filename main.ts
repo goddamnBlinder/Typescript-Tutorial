@@ -704,30 +704,37 @@ class shop {
      this.price + tax;
     }
 }
-//*Declaring a Return function in  a class Decorator.
 
-function blind(target:any, name: string, descriptor:PropertyDecorator){
-    console.log(target);
-    console.log(name)
+
+//*Return property descriptor data from a method decorator 
+
+function blind(target:any, name: string, descriptor:PropertyDescriptor){
     console.log(descriptor);
-    
+     const auto = descriptor.value;
+
+    const autoblind:PropertyDescriptor  = {
+     configurable: true,
+     enumerable:false,
+     get(){
+       return auto.bind(this);
+     }
+    }
+    return autoblind
     
 }
 
 class Bind { 
     name = 'chinweike';
-
+   
+   @blind
     bider():void{
       console.log(this.name);
        
     }
 }
-let button = document.querySelector("#button")!;
+
+let button = document?.querySelector("#button")!;
 const p = new Bind();
 
 
-button.addEventListener('click', () => {
-  p.bider()
-    
-
-})
+button.addEventListener('click', p.bider)
