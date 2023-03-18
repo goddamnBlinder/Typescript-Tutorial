@@ -603,7 +603,7 @@ function addUtil(
 let leela:  Readonly<string[]> = ['LMAO', 'LOL']
 console.log(leela);
 
-//*Dcorators 🍞
+//*DECORATORS 🍞
 //Allows extends the functionality
 // of classes and methods in declaring&Assigning the function.
 //it helps claasses to execute without instantiating an Object.
@@ -714,26 +714,20 @@ function blind(target:any, name: string, descriptor:PropertyDecorator){
     
 }
 
-class Bind {
-    
-    name = 'leela';
-    constructor(_t:string){
-       this.name = _t
-    }
+class Bind { 
+    name = 'chinweike';
+
     bider():void{
       console.log(this.name);
        
     }
 }
+let button = document.querySelector("#button")!;
+const p = new Bind();
 
-const p = new Bind('');
 
-let button = document?.querySelector("#btn");
-
-button?.addEventListener('click', (e) => {
-    e.preventDefault()
-    console.log(p.bider());
+button.addEventListener('click', () => {
+  p.bider()
     
- 
 
 })

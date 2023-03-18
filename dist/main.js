@@ -398,7 +398,7 @@ function addUtil(description, addedDate, occupation) {
 }
 let leela = ['LMAO', 'LOL'];
 console.log(leela);
-//*Dcorators 🍞
+//*DECORATORS 🍞
 //Allows extends the functionality
 // of classes and methods in declaring&Assigning the function.
 //it helps claasses to execute without instantiating an Object.
@@ -500,18 +500,16 @@ function blind(target, name, descriptor) {
     console.log(descriptor);
 }
 class Bind {
-    constructor(_t) {
-        this.name = 'leela';
-        this.name = _t;
+    constructor() {
+        this.name = 'chinweike';
     }
     bider() {
         console.log(this.name);
     }
 }
-const p = new Bind('');
-let button = document === null || document === void 0 ? void 0 : document.querySelector("#btn");
-button === null || button === void 0 ? void 0 : button.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(p.bider());
+let button = document.querySelector("#button");
+const p = new Bind();
+button.addEventListener('click', () => {
+    p.bider();
 });
 //# sourceMappingURL=main.js.map
