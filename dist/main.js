@@ -520,4 +520,25 @@ __decorate([
 let button = document === null || document === void 0 ? void 0 : document.querySelector("#button");
 const p = new Bind();
 button.addEventListener('click', p.bider);
+//*Implement Propety Validation Decoration
+function requried(target, name) { }
+class Course {
+    constructor(price, title) {
+        this.price = price;
+        this.title = title;
+    }
+}
+__decorate([
+    requried
+], Course.prototype, "price", void 0);
+const form = document === null || document === void 0 ? void 0 : document.querySelector("#submit");
+form === null || form === void 0 ? void 0 : form.addEventListener('click', (e) => {
+    e.preventDefault();
+    let priceEX = document === null || document === void 0 ? void 0 : document.querySelector('#price');
+    let titleEX = document === null || document === void 0 ? void 0 : document.querySelector('#input');
+    const prEX = +priceEX.value;
+    const title = titleEX.value;
+    const C = new Course(prEX, title);
+    console.log(C);
+});
 //# sourceMappingURL=main.js.map

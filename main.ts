@@ -735,6 +735,36 @@ class Bind {
 
 let button = document?.querySelector("#button")!;
 const p = new Bind();
+button.addEventListener('click', p.bider);
+
+//*Implement Propety Validation Decoration
+function requried(target:any, name:string){}
+
+class Course {
+    @requried
+    price:number;
+    title:string;
+    constructor(price: number, title: string){
+      this.price = price;
+      this.title = title;
+
+    }
+ 
+}
+const form = document?.querySelector("#submit");
+
+form?.addEventListener('click', (e) => {
+e.preventDefault()
+let priceEX = document?.querySelector('#price') as HTMLInputElement
+let titleEX = document?.querySelector('#input')  as HTMLInputElement
+
+const prEX = +priceEX.value;
+const title= titleEX.value;
 
 
-button.addEventListener('click', p.bider)
+const C = new Course(prEX, title)
+
+console.log(C);
+
+
+})
