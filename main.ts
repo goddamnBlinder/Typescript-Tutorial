@@ -738,11 +738,28 @@ const p = new Bind();
 button.addEventListener('click', p.bider);
 
 //*Implement Propety Validation Decoration
-function requried(target:any, name:string){}
+interface ValidationConfig {
 
-class Course {
+[property:string]: {
+    [validationProperty:string]:string[]
+};
+
+//    Course: {
+//     price: ['required'],
+//     title: ['required']
+//    }
+
+}
+
+function requried(target:any, name:string){
+    
+}
+
+class Course{
+
     @requried
     price:number;
+
     title:string;
     constructor(price: number, title: string){
       this.price = price;

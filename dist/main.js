@@ -520,8 +520,8 @@ __decorate([
 let button = document === null || document === void 0 ? void 0 : document.querySelector("#button");
 const p = new Bind();
 button.addEventListener('click', p.bider);
-//*Implement Propety Validation Decoration
-function requried(target, name) { }
+function requried(target, name) {
+}
 class Course {
     constructor(price, title) {
         this.price = price;
