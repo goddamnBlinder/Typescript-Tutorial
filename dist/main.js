@@ -520,7 +520,10 @@ __decorate([
 let button = document === null || document === void 0 ? void 0 : document.querySelector("#button");
 const p = new Bind();
 button.addEventListener('click', p.bider);
+const validatorObj = {};
 function requried(target, name) {
+    var className = target.constructor.name;
+    console.log(className);
 }
 class Course {
     constructor(price, title) {
@@ -530,7 +533,7 @@ class Course {
 }
 __decorate([
     requried
-], Course.prototype, "price", void 0);
+], Course.prototype, "title", void 0);
 const form = document === null || document === void 0 ? void 0 : document.querySelector("#submit");
 form === null || form === void 0 ? void 0 : form.addEventListener('click', (e) => {
     e.preventDefault();

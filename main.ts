@@ -751,16 +751,20 @@ interface ValidationConfig {
 
 }
 
+const validatorObj = {}
+
 function requried(target:any, name:string){
-    
+ var className = target.constructor.name;
+  console.log(className);
+  
 }
 
 class Course{
 
     @requried
-    price:number;
-
     title:string;
+    
+    price:number;
     constructor(price: number, title: string){
       this.price = price;
       this.title = title;
