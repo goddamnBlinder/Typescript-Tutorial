@@ -737,7 +737,7 @@ let button = document?.querySelector("#button")!;
 const p = new Bind();
 button.addEventListener('click', p.bider);
 
-//*Implement Propety Validation Decoration
+//*IMPLEMENT PROPERTY VALIDATION DECORATION
 interface ValidationConfig {
 
 [property:string]: {
