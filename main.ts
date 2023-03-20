@@ -751,20 +751,56 @@ interface ValidationConfig {
 
 }
 
-const validatorObj = {}
+const validatorObj: ValidationConfig  = {}
 
 function requried(target:any, name:string){
  var className = target.constructor.name;
-  console.log(className);
+    validatorObj[className]= {
+        ...validatorObj[className],
+         [name]: ['required'],
+    }
+  console.log(validatorObj);
   
+}
+function positive(target:any, name:string){
+ var className = target.constructor.name;
+    validatorObj[className]= {
+        ...validatorObj[className],
+         [name]: ['positive'],
+    }
+  console.log(validatorObj);
+  
+}
+
+function validate(obj:any){
+let validateName = validatorObj[obj.constructor.name]
+   if(!validateName){
+        return true
+   }
+    let isValid = true;
+    
+    for(const prop in validateName){
+       for(const validator of validateName[prop]){
+           switch (validator) {
+            case 'required':
+                isValid = isValid && !!obj[prop];   
+                break;
+            case 'positive':
+                isValid = obj[prop] > 0
+                break;
+           }
+        }
+    }
+    return isValid;
 }
 
 class Course{
 
     @requried
     title:string;
-    
+    @positive
     price:number;
+
     constructor(price: number, title: string){
       this.price = price;
       this.title = title;
@@ -784,6 +820,10 @@ const title= titleEX.value;
 
 
 const C = new Course(prEX, title)
+
+if(!validate(C)){
+   alert("Input Value not valid!!")
+}
 
 console.log(C);
 

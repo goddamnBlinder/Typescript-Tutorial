@@ -523,7 +523,33 @@ button.addEventListener('click', p.bider);
 const validatorObj = {};
 function requried(target, name) {
     var className = target.constructor.name;
-    console.log(className);
+    validatorObj[className] = Object.assign(Object.assign({}, validatorObj[className]), { [name]: ['required'] });
+    console.log(validatorObj);
+}
+function positive(target, name) {
+    var className = target.constructor.name;
+    validatorObj[className] = Object.assign(Object.assign({}, validatorObj[className]), { [name]: ['positive'] });
+    console.log(validatorObj);
+}
+function validate(obj) {
+    let validateName = validatorObj[obj.constructor.name];
+    if (!validateName) {
+        return true;
+    }
+    let isValid = true;
+    for (const prop in validateName) {
+        for (const validator of validateName[prop]) {
+            switch (validator) {
+                case 'required':
+                    isValid = isValid && !!obj[prop];
+                    break;
+                case 'positive':
+                    isValid = obj[prop] > 0;
+                    break;
+            }
+        }
+    }
+    return isValid;
 }
 class Course {
     constructor(price, title) {
@@ -534,6 +560,9 @@ class Course {
 __decorate([
     requried
 ], Course.prototype, "title", void 0);
+__decorate([
+    positive
+], Course.prototype, "price", void 0);
 const form = document === null || document === void 0 ? void 0 : document.querySelector("#submit");
 form === null || form === void 0 ? void 0 : form.addEventListener('click', (e) => {
     e.preventDefault();
@@ -542,6 +571,9 @@ form === null || form === void 0 ? void 0 : form.addEventListener('click', (e) =
     const prEX = +priceEX.value;
     const title = titleEX.value;
     const C = new Course(prEX, title);
+    if (!validate(C)) {
+        alert("Input Value not valid!!");
+    }
     console.log(C);
 });
 //# sourceMappingURL=main.js.map
